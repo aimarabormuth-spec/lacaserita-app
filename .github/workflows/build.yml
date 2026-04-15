@@ -15,12 +15,11 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install flet
-          # Buscamos cualquier archivo que empiece con 'main' y lo dejamos como 'main.py'
-          find . -maxdepth 1 -name "main*" -exec mv {} main.py \; || true
+          find . -maxdepth 1 -name "main*.py*" -exec mv {} main.py \; || true
 
       - name: Build APK
         run: |
-          flet build apk
+          flet build apk --yes
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
